@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
 
   public selectedFile = null;
   public parserError = null;
+  public parserWarning = null;
   public routesInfile: GpxRoute[] = [];
   public routesDisplay: GpxRouteDisplay[] = [];
   private rootUrl = 'https://www.google.com/maps/dir';
@@ -99,6 +100,7 @@ export class HomeComponent implements OnInit {
   // -------------------------------------------------------------------------------------------------------------------
   public processFile(): void {
     this.parserError = null;
+    this.parserWarning = null;
     const parser = new xml2js.Parser(
       {
         trim: true,
@@ -142,16 +144,16 @@ export class HomeComponent implements OnInit {
                       slicedCoords.push(item.rtept[j]);
                   }
 
-                  newObj.segmentUris.push({
-                    mapsUri: this.generateMapsUri(slicedCoords),
-                    embedUri: this.generateEmbedUri(slicedCoords)
-                  });
-
                   if (i > 0) {
                     newObj.routeSegments[i] = item.rtept.slice(sectionStart - 1, sectionEnd);
                   } else {
                     newObj.routeSegments[i] = item.rtept.slice(sectionStart, sectionEnd);
                   }
+
+                  newObj.segmentUris.push({
+                    mapsUri: this.generateMapsUri(newObj.routeSegments[i]),
+                    embedUri: this.generateEmbedUri(newObj.routeSegments[i])
+                  });
                 }
             } else {
               newObj.routeSegments = [item.rtept];
@@ -164,6 +166,8 @@ export class HomeComponent implements OnInit {
           }
 
           console.log('routesDisplay', this.routesDisplay);
+        } else {
+          this.parserWarning = 'We did not find any routes in your gpx file';
         }
 
 

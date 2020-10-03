@@ -25,6 +25,13 @@
       </pre>
     </div>
   </div>
+  <div *ngIf="parserWarning != null" class="row d-flex justify-content-center pt-2 pb-2 text-white">
+    <div class="col-sm-8 bg-warning rounded">
+      <div class="block text-center pt-1 pb-1">
+        <b>{{parserWarning}}</b>
+      </div>
+    </div>
+  </div>
   <div class="row mt-2">
     <div class="col-sm-12 d-flex justify-content-center">
       <app-paypal-donate></app-paypal-donate>
