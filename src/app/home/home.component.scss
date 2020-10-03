@@ -1,0 +1,29 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.route-container {
+  height: 650px;
+  max-height: 650px;
+
+  .route-list {
+    max-height: 600px;
+
+    .route-list-table {
+      height: 580px;
+      max-height: 580px !important;
+      overflow-y: scroll !important;
+    }
+  }
+
+  .hover-row:hover {
+    background-color: lightgray;
+
+    .hover-sub-row {
+      background-color: lightgray;
+    }
+    .hover-sub-row:hover {
+      background-color: white !important;
+    }
+  }
+}

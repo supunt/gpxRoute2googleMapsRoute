@@ -1,0 +1,15 @@
+<agm-map
+  *ngIf="getDefaultMapCenter()"
+  [latitude]="getDefaultMapCenter().lat"
+  [longitude]="getDefaultMapCenter().lng"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  (mapReady)="onMapReady()"
+  [fitBounds]="viewport">
+
+  <agm-direction *ngIf="waypoints.length > 0"
+    [origin]="startingPoint"
+    [destination]="endingPoint"
+    [waypoints]="waypoints">
+  </agm-direction>
+</agm-map>
