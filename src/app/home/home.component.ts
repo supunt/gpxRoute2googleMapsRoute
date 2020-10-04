@@ -80,15 +80,25 @@ export class HomeComponent implements OnInit {
 
   // -------------------------------------------------------------------------------------------------------------------
   parseFile(inputValue: any): void {
-    this.routesInfile = [];
+    this.parserError = null;
+    this.parserWarning = null;
     const file: File = inputValue.files[0];
     if (inputValue.files.length === 0) {
       return;
     }
 
     this.displayLabel.nativeElement.innerHTML = inputValue.files[0].name;
-    const fileType = inputValue.parentElement.id;
+    console.log(inputValue.files[0].name);
 
+    const fileNameSplits = inputValue.files[0].name.split('.');
+    const fileType = fileNameSplits[fileNameSplits.length - 1].toLowerCase();
+
+    if (fileType !== 'gpx' && fileType !== 'xmp') {
+      this.parserError = 'We support .gpx and .xml (that share .gpx schema) files only';
+      return;
+    }
+
+    this.routesInfile = [];
     const myReader: FileReader = new FileReader();
     myReader.onloadend = (e) => {
       this.lastLoadedfileData = myReader.result;
