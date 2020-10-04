@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   public routesDisplay: GpxRouteDisplay[] = [];
   private rootUrl = 'https://www.google.com/maps/dir';
 
-  private lastLoadedfileData = null;
+  public lastLoadedfileData = null;
   public selectedRow = -1;
   public selectedSubRow = -1;
 
