@@ -194,10 +194,11 @@ export class HomeComponent implements OnInit {
 
     const epochNow = Date.now();
 
-    const urlConstruct =
-      `https://www.google.com/maps/embed?pb=!1m${coords.length * 4 + 16}!1m12
-      !1m3!1d1.0!2d${coords[0].$.lon}!3d${coords[0].$.lon}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1
-      !4m${coords.length * 4 + 1}!3e0${coordinateString}!5e0!3m2!1sen!2sau!4v${epochNow}000!5m2!1sen!2sau`;
+    let urlConstruct = `https://www.google.com/maps/embed?pb=!1m${coords.length * 4 + 16}`;
+    urlConstruct += `!1m12!1m3!1d1.0!2d${coords[0].$.lon}!3d${coords[0].$.lon}`;
+    urlConstruct += `!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1`;
+    urlConstruct += `!4m${coords.length * 4 + 1}!3e0${coordinateString}`;
+    urlConstruct += `!5e0!3m2!1sen!2sau!4v${epochNow}000!5m2!1sen!2sau`;
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(urlConstruct);
   }

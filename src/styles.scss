@@ -2,3 +2,13 @@
 .theme {
   font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif !important;
 }
+
+@media (max-width: 768px) {
+  h3 {
+    font-size: 1.25em;
+  }
+
+  h5 {
+    font-size: 1em;
+  }
+ }
