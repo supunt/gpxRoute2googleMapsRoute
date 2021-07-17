@@ -11,6 +11,10 @@
         <label class="custom-file-label" for="customFile" #displayLabel>Choose file</label>
       </div>
       <div class="block text-center mt-2">
+        <span>On Andriod Auto ? </span>
+        <input type="checkbox" class="btn btn-info pl-5 pr-5 custom_check_box" (click)="toggleAndroidAuto($event)"/>
+      </div>
+      <div class="block text-center mt-2">
         <button [disabled]="lastLoadedfileData == null" class="btn btn-info pl-5 pr-5" (click)="processFile()">Convert</button>
       </div>
     </div>

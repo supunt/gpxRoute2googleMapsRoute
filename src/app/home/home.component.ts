@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   public routesInfile: GpxRoute[] = [];
   public routesDisplay: GpxRouteDisplay[] = [];
   private rootUrl = 'https://www.google.com/maps/dir';
+  public androidAutoMode = false
 
   public lastLoadedfileData = null;
   public selectedRow = -1;
@@ -41,6 +42,12 @@ export class HomeComponent implements OnInit {
   // -------------------------------------------------------------------------------------------------------------------
   clearSelection($event): void {
     $event.target.value = null;
+  }
+
+  toggleAndroidAuto($event): void {
+    this.routesDisplay = [];
+    this.routesInfile = [];
+    this.androidAutoMode = !this.androidAutoMode;
   }
 
   // -------------------------------------------------------------------------------------------------------------------
@@ -111,6 +118,9 @@ export class HomeComponent implements OnInit {
   public processFile(): void {
     this.parserError = null;
     this.parserWarning = null;
+    this.routesDisplay = [];
+    this.routesInfile = [];
+
     const parser = new xml2js.Parser(
       {
         trim: true,
@@ -179,8 +189,6 @@ export class HomeComponent implements OnInit {
         } else {
           this.parserWarning = 'We did not find any routes in your gpx file';
         }
-
-
       });
   }
 
@@ -207,6 +215,11 @@ export class HomeComponent implements OnInit {
   private generateMapsUri(coords: GpxWayPoint[]): string {
 
     let splitUrl = this.rootUrl;
+
+    if (this.androidAutoMode) {
+      splitUrl += '/'
+    }
+
     for (const coord of coords) {
         splitUrl += `/${coord.$.lat},${coord.$.lon}`;
     }
