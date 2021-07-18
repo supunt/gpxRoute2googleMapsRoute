@@ -11,14 +11,18 @@
         <label class="custom-file-label" for="customFile" #displayLabel>Choose file</label>
       </div>
       <div class="block text-center mt-2">
-        <span>On Andriod Auto ? </span>
-        <input type="checkbox" class="btn btn-info pl-5 pr-5 custom_check_box" (click)="toggleAndroidAuto($event)"/>
+        <span class="text-primary">Are you using Andriod Auto ? </span>
+        <input type="checkbox" class="btn btn-info pl-5 pr-5 custom_check_box border border-primary" (click)="toggleAndroidAuto($event)"/>
+        <br />
+        <span style="font-size: 12px;">URLs for Android Auto are slightly different. Please check the box if you are using these links on Android Auto</span>
       </div>
+      <br />
       <div class="block text-center mt-2">
         <button [disabled]="lastLoadedfileData == null" class="btn btn-info pl-5 pr-5" (click)="processFile()">Convert</button>
       </div>
     </div>
   </div>
+  <hr style="width: 40%"/>
   <div *ngIf="parserError != null" class="row d-flex justify-content-center pt-2 pb-2 text-white">
     <div class="col-sm-8 bg-danger rounded">
       <div class="block text-center pt-1">
