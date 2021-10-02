@@ -21,3 +21,14 @@ https://www.hostingadvice.com/how-to/install-phpmyadmin-on-ubuntu/
 https://www.vultr.com/docs/install-a-lamp-stack-on-ubuntu-20-04-lts
 https://www.vultr.com/docs/how-to-install-apache-mysql-and-php-on-ubuntu-18-04
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04
+https://www.thepolyglotdeveloper.com/2015/01/run-nodejs-application-lamp-stack-server/
+
+## SSR Deploymnet
+* npm run build:ssr
+* copy dist folder to destination
+
+## Server setup for SSR
+* Install NVM
+* Install Node
+* Install npm
+* Install PM2
