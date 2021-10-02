@@ -16,3 +16,7 @@ You can copy the link tgat it generates and open in a new browser tab to use ful
 The madness that went in to this is documented in the link below \
 https://medium.com/@supun1001/how-to-generate-google-embed-links-programmatically-for-iframes-for-routes-only-d6dc225e59e8
 
+## Hosting Documentation
+https://www.hostingadvice.com/how-to/install-phpmyadmin-on-ubuntu/
+https://www.vultr.com/docs/install-a-lamp-stack-on-ubuntu-20-04-lts
+https://www.vultr.com/docs/how-to-install-apache-mysql-and-php-on-ubuntu-18-04
