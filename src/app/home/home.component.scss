@@ -7,6 +7,10 @@
   height: 16px;
 }
 
+.font-12 {
+  font-size: 12px;
+}
+
 .route-container {
   height: 650px;
   max-height: 650px;
@@ -15,7 +19,6 @@
     max-height: 600px;
 
     .route-list-table {
-      height: 580px;
       max-height: 580px !important;
       overflow-y: scroll !important;
     }

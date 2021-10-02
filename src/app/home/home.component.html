@@ -6,23 +6,26 @@
     </div>
     <div class="col-sm-12">
       <div class="custom-file">
-        <input type="file" class="custom-file-input cursor-pointer" accept=".xml,.gpx"
-          (change)="changeListener($event)" id="customFile" (click)="clearSelection($event)">
+        <input type="file" class="custom-file-input cursor-pointer" accept=".xml,.gpx" (change)="changeListener($event)"
+          id="customFile" (click)="clearSelection($event)">
         <label class="custom-file-label" for="customFile" #displayLabel>Choose file</label>
       </div>
       <div class="block text-center mt-2">
         <span class="text-primary">Are you using Andriod Auto ? </span>
-        <input type="checkbox" class="btn btn-info pl-5 pr-5 custom_check_box border border-primary" (click)="toggleAndroidAuto($event)"/>
+        <input type="checkbox" class="btn btn-info pl-5 pr-5 custom_check_box border border-primary"
+          (click)="toggleAndroidAuto($event)" />
         <br />
-        <span style="font-size: 12px;">URLs for Android Auto are slightly different. Please check the box if you are using these links on Android Auto</span>
+        <span style="font-size: 12px;">URLs for Android Auto are slightly different. Please check the box if you are
+          using these links on Android Auto</span>
       </div>
       <br />
       <div class="block text-center mt-2">
-        <button [disabled]="lastLoadedfileData == null" class="btn btn-info pl-5 pr-5" (click)="processFile()">Convert</button>
+        <button [disabled]="lastLoadedfileData == null" class="btn btn-info pl-5 pr-5"
+          (click)="processFile()">Convert</button>
       </div>
     </div>
   </div>
-  <hr style="width: 40%"/>
+  <hr style="width: 40%" />
   <div *ngIf="parserError != null" class="row d-flex justify-content-center pt-2 pb-2 text-white">
     <div class="col-sm-8 bg-danger rounded">
       <div class="block text-center pt-1">
@@ -47,7 +50,8 @@
   </div>
   <div class="row mt-2">
     <div class="col-sm-12 text-center text-info">
-      We are hosted on <a href="https://www.vultr.com/?ref=8721407">Vultr.com</a> check it out to see if that fits your hosting needs.
+      We are hosted on <a href="https://www.vultr.com/?ref=8721407">Vultr.com</a> check it out to see if that fits your
+      hosting needs.
     </div>
   </div>
   <ng-container *ngIf="routesInfile?.length > 0">
@@ -70,20 +74,23 @@
             <table class="table table-light">
               <tbody>
                 <tr *ngFor="let rt of routesDisplay; index as i" class="cursor-pointer hover-row"
-                   [ngClass]="{'bg-info text-white' : i == selectedRow}">
+                  [ngClass]="{'bg-info text-white' : i == selectedRow}">
                   <td *ngIf="rt.routeSegments.length > 1">
                     {{rt.name}}
                     <table class="table table-light">
                       <tbody>
                         <tr *ngFor="let subRt of rt.routeSegments; index as j" class="cursor-pointer hover-sub-row"
-                            [ngClass]="{'bg-white text-info' : j == selectedSubRow && i == selectedRow }"
-                            (click)="rowSelected(i, j)">
-                            <td>Route Part {{j + 1}}<i class="fa fa-clipboard  float-right" aria-hidden="true" (click)="copyLinkToClipboard(rt.segmentUris[j].mapsUri, $event)"></i></td>
+                          [ngClass]="{'bg-white text-info' : j == selectedSubRow && i == selectedRow }"
+                          (click)="rowSelected(i, j)">
+                          <td>Route Part {{j + 1}}<i class="fa fa-clipboard  float-right" aria-hidden="true"
+                              (click)="copyLinkToClipboard(rt.segmentUris[j].mapsUri, $event)"></i></td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
-                  <td *ngIf="rt.routeSegments.length === 1" (click)="rowSelected(i, 0)">{{rt.name}} <i class="fa fa-clipboard float-right" aria-hidden="true" (click)="copyLinkToClipboard(rt.segmentUris[0].mapsUri, $event)"></i></td>
+                  <td *ngIf="rt.routeSegments.length === 1" (click)="rowSelected(i, 0)">{{rt.name}} <i
+                      class="fa fa-clipboard float-right" aria-hidden="true"
+                      (click)="copyLinkToClipboard(rt.segmentUris[0].mapsUri, $event)"></i></td>
                 </tr>
               </tbody>
             </table>
@@ -91,10 +98,17 @@
         </div>
       </div>
       <div class="col-sm-8 border">
-        <iframe *ngIf="selectedRow != -1 && selectedSubRow != -1" [src]="routesDisplay[selectedRow].segmentUris[selectedSubRow].embedUri" width="100%" height="100%"></iframe>
+        <iframe *ngIf="selectedRow != -1 && selectedSubRow != -1"
+          [src]="routesDisplay[selectedRow].segmentUris[selectedSubRow].embedUri" width="100%" height="100%"></iframe>
       </div>
-      
-
     </div>
   </ng-container>
+  <div class="mb-0 pb-1">
+    <hr />
+    <p class="text-center font-12">
+      Copyright©2021
+      <br>
+      <a href="www.linkedin.com/in/supun-d-silva">Supun De Silva - @LinkedIn</a>
+    </p>
+  </div>
 </div>
