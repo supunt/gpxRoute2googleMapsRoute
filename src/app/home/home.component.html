@@ -1,8 +1,26 @@
 <app-header></app-header>
 <div class="container">
   <div class="row mt-5">
+    <div class="col-sm-12 d-flex justify-content-center">    
+      <h2 class="text-secondary">What is this tool ??</h2>  
+    </div>
     <div class="col-sm-12 d-flex justify-content-center">      
-      <h5>Upload your .gpx Route File</h5>
+      <p class="font-12 text-center text-secondary">
+        This is a tool to convert GPX (v1.1) files to segments of google maps urls that you can share.
+        <br>
+        Each segment will have a MAXIMUM of 25 way points. This is a google maps limitation
+        <br>
+        Once Converted, you can
+        <br>
+        1. Copy the maps url by clicking on <i class="fa fa-clipboard"></i>     
+        <br>
+        2. Open maps url on new tab by clicking on <i class="fa fa-external-link-square"></i> 
+        <br>
+        3. Share maps url by clicking on <i class="fa fa-share-alt-square"></i> 
+      </p>
+    </div>
+    <div class="col-sm-12 d-flex justify-content-center">      
+      <h5 class="text-secondary">Upload your .gpx Route File</h5>
     </div>
     <div class="col-sm-12 d-flex justify-content-center">      
       <p class="font-12 text-danger"><b>(GPX version 1.1 only)</b></p>
@@ -79,24 +97,39 @@
           <div class="col-sm-12 route-list-table">
             <table class="table table-light">
               <tbody>
-                <tr *ngFor="let rt of routesDisplay; index as i" class="cursor-pointer hover-row"
-                  [ngClass]="{'bg-info text-white' : i == selectedRow}">
+                <tr *ngFor="let rt of routesDisplay; index as i" class="cursor-pointer p-1 hover-row"
+                  [ngClass]="{'bg-info text-white' : i == selectedRow}" (click)="expandRow(i)">
                   <td *ngIf="rt.routeSegments.length > 1">
-                    {{rt.name}}
-                    <table class="table table-light">
+                    {{rt.name}} 
+                    <button class="border border-secondary rounded pl-1 pr-1 float-right bg-secondary text-white" (click)="toggleCollapse($event)">
+                      ({{rt.routeSegments.length}}) 
+                      <i *ngIf="expandedRow == i" class="fa fa-caret-up"></i>
+                      <i *ngIf="expandedRow != i" class="fa fa-caret-down"></i>
+                    </button>
+                   
+                    <table class="table table-light mt-1" *ngIf="expandedRow == i">
                       <tbody>
                         <tr *ngFor="let subRt of rt.routeSegments; index as j" class="cursor-pointer hover-sub-row"
                           [ngClass]="{'bg-white text-info' : j == selectedSubRow && i == selectedRow }"
-                          (click)="rowSelected(i, j)">
-                          <td>Route Part {{j + 1}}<i class="fa fa-clipboard  float-right" aria-hidden="true"
-                              (click)="copyLinkToClipboard(rt.segmentUris[j].mapsUri, $event)"></i></td>
+                          (click)="rowSelected(i, j, $event)">
+                          <td>Route Part {{j + 1}}
+                            <div class="float-right">
+                              <i class="fa fa-clipboard pr-1" aria-hidden="true" (click)="copyLinkToClipboard(rt.segmentUris[j].mapsUri, $event)"></i>
+                              <i class="fa fa-external-link-square" aria-hidden="true" (click)="goToLink(rt.segmentUris[0].mapsUri, $event)"></i>
+                            </div>
+                            
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
-                  <td *ngIf="rt.routeSegments.length === 1" (click)="rowSelected(i, 0)">{{rt.name}} <i
-                      class="fa fa-clipboard float-right" aria-hidden="true"
-                      (click)="copyLinkToClipboard(rt.segmentUris[0].mapsUri, $event)"></i></td>
+                  <td *ngIf="rt.routeSegments.length === 1" (click)="rowSelected(i, 0, $event)">{{rt.name}} 
+                    <div class="float-right">
+                      <i class="fa fa-clipboard pr-1" aria-hidden="true" (click)="copyLinkToClipboard(rt.segmentUris[0].mapsUri, $event)"></i>    
+                      <i class="fa fa-external-link-square" aria-hidden="true" (click)="goToLink(rt.segmentUris[0].mapsUri, $event)"></i>   
+                    </div>
+                                 
+                  </td>
                 </tr>
               </tbody>
             </table>

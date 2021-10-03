@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   public lastLoadedfileData = null;
   public selectedRow = -1;
+  public expandedRow = -1;
   public selectedSubRow = -1;
 
 
@@ -51,7 +52,31 @@ export class HomeComponent implements OnInit {
   }
 
   // -------------------------------------------------------------------------------------------------------------------
-  rowSelected(rowIndex: number, segment: number): void {
+  toggleCollapse(e: Event, rowIndex: number) {
+    if (this.expandedRow == rowIndex) {
+      this.expandedRow = -1
+    } else {
+      this.expandedRow = rowIndex
+    }
+    
+    e.stopPropagation()
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  collapseRow(rowIndex: number) : void{
+    this.expandedRow = rowIndex    
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  expandRow(rowIndex: number) : void{
+    this.expandedRow = rowIndex 
+    this.selectedRow = rowIndex;
+    this.selectedSubRow = 0
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  rowSelected(rowIndex: number, segment: number, e: Event): void {
+    this.expandRow(rowIndex)
     this.selectedRow = rowIndex;
     this.selectedSubRow = segment;
     const selectedroute = this.routesDisplay[rowIndex];
@@ -65,6 +90,7 @@ export class HomeComponent implements OnInit {
     });
 
     console.log(this.routesDisplay[this.selectedRow].segmentUris[this.selectedSubRow])
+    e.stopPropagation()
 
     // this.gmapElement.updateMarkers(coordinates);
   }
@@ -82,6 +108,12 @@ export class HomeComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    event.stopPropagation();
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  goToLink(url, event){
+    window.open(url, "_blank");
     event.stopPropagation();
   }
 
@@ -120,6 +152,7 @@ export class HomeComponent implements OnInit {
     this.parserWarning = null;
     this.routesDisplay = [];
     this.routesInfile = [];
+    this.collapseRow(-1) 
 
     const parser = new xml2js.Parser(
       {
