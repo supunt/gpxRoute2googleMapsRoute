@@ -15,8 +15,8 @@
         1. Copy the maps url by clicking on <i class="fa fa-clipboard"></i>     
         <br>
         2. Open maps url on new tab by clicking on <i class="fa fa-external-link-square"></i> 
-        <br>
-        3. Share maps url by clicking on <i class="fa fa-share-alt-square"></i> 
+        <!-- <br>
+        3. Share maps url by clicking on <i class="fa fa-share-alt-square"></i>  -->
       </p>
     </div>
     <div class="col-sm-12 d-flex justify-content-center">      
@@ -32,15 +32,17 @@
         <label class="custom-file-label" for="customFile" #displayLabel>Choose file</label>
       </div>
       <div class="block text-center mt-2">
-        <span class="text-primary">Are you using Andriod Auto ? </span>
+        <span class="text-info" placement="bottom" ngbTooltip="Tooltip on bottom">Are you using Andriod Auto ? <i class="fa fa-question-circle" (click)="toggleAndroidAutoDoc()"></i>&nbsp;</span>
         <input type="checkbox" class="btn btn-info pl-5 pr-5 custom_check_box border border-primary"
           (click)="toggleAndroidAuto($event)" />
-        <br />
-        <span class="text-orange" style="font-size: 12px;">Important !!!</span>
-        <br />
-        <span class="text-orange" style="font-size: 12px;">URLs for Android Auto are slightly different.</span>
-        <br />
-        <span class="text-orange" style="font-size: 12px;">Please check the box if you are using these links on Android Auto</span>
+        <ng-container *ngIf="showAndroidAutoDoc" >
+          <br />
+          <span class="text-orange" style="font-size: 12px;">Important !!!</span>
+          <br />
+          <span class="text-orange" style="font-size: 12px;">URLs for Android Auto are slightly different.</span>
+          <br />
+          <span class="text-orange" style="font-size: 12px;">Please check the box if you are using these links on Android Auto</span>
+        </ng-container>
       </div>
       <br />
       <div class="block text-center mt-2">

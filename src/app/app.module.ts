@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbTimeAdapter, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbTimeAdapter, NgbActiveModal, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerAdapter, DatepickerParserFormatter, TimepickerAdapter } from './shared/elements/exports';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertModule } from './shared/components/alert/alert.module';
@@ -21,7 +21,8 @@ import { AlertModule } from './shared/components/alert/alert.module';
     SharedModule,
     NgbModule,
     HttpClientModule,
-    AlertModule
+    AlertModule,
+    NgbTooltipModule
   ],
   providers: [
     {

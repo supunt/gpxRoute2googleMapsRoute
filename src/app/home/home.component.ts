@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   public selectedRow = -1;
   public expandedRow = -1;
   public selectedSubRow = -1;
+  public showAndroidAutoDoc = false
 
 
   @ViewChild(GoogleMapComponent, { static: false }) gmapElement: GoogleMapComponent;
@@ -62,6 +63,12 @@ export class HomeComponent implements OnInit {
     
     e.stopPropagation()
   }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  toggleAndroidAutoDoc() : void{
+    this.showAndroidAutoDoc = !this.showAndroidAutoDoc    
+  }
+
 
   // -------------------------------------------------------------------------------------------------------------------
   collapseRow(rowIndex: number) : void{
