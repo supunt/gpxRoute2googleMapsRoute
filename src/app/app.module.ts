@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbTimeAdapter, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DatepickerAdapter, DatepickerParserFormatter, TimepickerAdapter } from './shared/elements/exports';
 import { HttpClientModule } from '@angular/common/http';
+import { AlertModule } from './shared/components/alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeModule,
     SharedModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    AlertModule
   ],
   providers: [
     {

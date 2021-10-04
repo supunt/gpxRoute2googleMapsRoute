@@ -4,6 +4,7 @@ import { GoogleMapModule } from './google-map/google-map.module';
 import { LoaderModule } from './loader/loader.module';
 import { PaypalDonateModule } from './paypal-donate/paypal-donate.module';
 import { HeaderModule } from './header/header.module';
+import { AlertModule } from './alert/alert.module';
 
 
 
@@ -16,7 +17,8 @@ import { HeaderModule } from './header/header.module';
     GoogleMapModule,
     LoaderModule,
     PaypalDonateModule,
-    HeaderModule
+    HeaderModule,
+    AlertModule
 ]
 })
 export class ComponentsModule { }

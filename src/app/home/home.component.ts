@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import xml2js from 'xml2js';
 import { GoogleMapComponent } from '../shared/components/google-map/google-map.component';
-import { GoogleMapMarker, GpxRoute, GpxRouteDisplay, GpxWayPoint } from '../shared/export';
+import { AlertService, GoogleMapMarker, GpxRoute, GpxRouteDisplay, GpxWayPoint } from '../shared/export';
 import { DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   @ViewChild(GoogleMapComponent, { static: false }) gmapElement: GoogleMapComponent;
   @ViewChild('displayLabel', { static: false, read: ElementRef }) displayLabel: ElementRef;
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer, private alertSvc: AlertService) { }
 
   // -------------------------------------------------------------------------------------------------------------------
   ngOnInit(): void {
@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.expandedRow = rowIndex
     }
+    this.rowSelected(rowIndex, 0, e)
     
     e.stopPropagation()
   }
@@ -108,6 +109,7 @@ export class HomeComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    this.alertSvc.info('Link Copied', {autoClose:true})
     event.stopPropagation();
   }
 

@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-  <div class="row mt-5">
+  <div class="row mt-5">        
     <div class="col-sm-12 d-flex justify-content-center">    
       <h2 class="text-secondary">What is this tool ??</h2>  
     </div>
@@ -83,6 +83,9 @@
       <div class="col-sm-12 d-flex justify-content-center">
         <h5>Route Results</h5>
       </div>
+      <div class="col-sm-12">
+        <app-alert></app-alert>
+      </div>
     </div>
     <hr>
     <div class="row route-container">
@@ -98,15 +101,14 @@
             <table class="table table-light">
               <tbody>
                 <tr *ngFor="let rt of routesDisplay; index as i" class="cursor-pointer p-1 hover-row"
-                  [ngClass]="{'bg-info text-white' : i == selectedRow}" (click)="expandRow(i)">
+                  [ngClass]="{'bg-info text-white' : i == selectedRow}" (click)="toggleCollapse($event, i)">
                   <td *ngIf="rt.routeSegments.length > 1">
                     {{rt.name}} 
-                    <button class="border border-secondary rounded pl-1 pr-1 float-right bg-secondary text-white" (click)="toggleCollapse($event)">
+                    <button class="border border-secondary rounded pl-1 pr-1 float-right bg-secondary text-white" (click)="toggleCollapse($event, i)">
                       ({{rt.routeSegments.length}}) 
                       <i *ngIf="expandedRow == i" class="fa fa-caret-up"></i>
                       <i *ngIf="expandedRow != i" class="fa fa-caret-down"></i>
-                    </button>
-                   
+                    </button>                   
                     <table class="table table-light mt-1" *ngIf="expandedRow == i">
                       <tbody>
                         <tr *ngFor="let subRt of rt.routeSegments; index as j" class="cursor-pointer hover-sub-row"
