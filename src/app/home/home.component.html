@@ -15,8 +15,8 @@
         1. Copy the maps url by clicking on <i class="fa fa-clipboard"></i>     
         <br>
         2. Open maps url on new tab by clicking on <i class="fa fa-external-link-square"></i> 
-        <!-- <br>
-        3. Share maps url by clicking on <i class="fa fa-share-alt-square"></i>  -->
+        <br>
+        3. Share maps url on whatsapp by clicking on <i class="fa fa-whatsapp"></i> 
       </p>
     </div>
     <div class="col-sm-12 d-flex justify-content-center">      
@@ -118,10 +118,10 @@
                           (click)="rowSelected(i, j, $event)">
                           <td>Route Part {{j + 1}}
                             <div class="float-right">
-                              <i class="fa fa-clipboard pr-1" aria-hidden="true" (click)="copyLinkToClipboard(rt.segmentUris[j].mapsUri, $event)"></i>
-                              <i class="fa fa-external-link-square" aria-hidden="true" (click)="goToLink(rt.segmentUris[0].mapsUri, $event)"></i>
-                            </div>
-                            
+                              <i class="fa fa-clipboard pr-1" (click)="copyLinkToClipboard(rt.segmentUris[j].mapsUri, $event)"></i>
+                              <i class="fa fa-external-link-square pr-1" (click)="goToLink(rt.segmentUris[j].mapsUri, $event)"></i>
+                              <a class="text-success" [href]="getWhatsappUri(rt.segmentUris[j].mapsUri, 'whatsapp')" data-action="share/whatsapp/share"><i class="fa fa-whatsapp pr-1"></i></a>
+                            </div>                            
                           </td>
                         </tr>
                       </tbody>
@@ -129,10 +129,10 @@
                   </td>
                   <td *ngIf="rt.routeSegments.length === 1" (click)="rowSelected(i, 0, $event)">{{rt.name}} 
                     <div class="float-right">
-                      <i class="fa fa-clipboard pr-1" aria-hidden="true" (click)="copyLinkToClipboard(rt.segmentUris[0].mapsUri, $event)"></i>    
-                      <i class="fa fa-external-link-square" aria-hidden="true" (click)="goToLink(rt.segmentUris[0].mapsUri, $event)"></i>   
-                    </div>
-                                 
+                      <i class="fa fa-clipboard pr-1" (click)="copyLinkToClipboard(rt.segmentUris[0].mapsUri, $event)"></i>    
+                      <i class="fa fa-external-link-square pr-1" (click)="goToLink(rt.segmentUris[0].mapsUri, $event)"></i>
+                      <a class="text-success" [href]="getWhatsappUri(rt.segmentUris[0].mapsUri, 'whatsapp')" data-action="share/whatsapp/share"><i class="fa fa-whatsapp pr-1"></i></a>
+                    </div>   
                   </td>
                 </tr>
               </tbody>

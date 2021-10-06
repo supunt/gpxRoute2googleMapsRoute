@@ -69,10 +69,29 @@ export class HomeComponent implements OnInit {
     this.showAndroidAutoDoc = !this.showAndroidAutoDoc    
   }
 
-
   // -------------------------------------------------------------------------------------------------------------------
   collapseRow(rowIndex: number) : void{
     this.expandedRow = rowIndex    
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  getWhatsappUri(uri, msgType) {
+    if (msgType === 'whatsapp') {
+      return this.sanitizer.bypassSecurityTrustUrl("whatsapp://send?text=Someone shared a Google Maps Route with you \n" + uri)
+    } else if (msgType === 'sms') {
+      return this.sanitizer.bypassSecurityTrustUrl("sms://?body=Someone shared a Google Maps Route with you <br>" + uri)
+    }    
+  }
+
+  // -------------------------------------------------------------------------------------------------------------------
+  isOnDevice() {
+    var ua = navigator.userAgent;
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
+      return true
+    }
+      
+    return false
   }
 
   // -------------------------------------------------------------------------------------------------------------------
