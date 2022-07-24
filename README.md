@@ -24,8 +24,9 @@ https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mys
 https://www.thepolyglotdeveloper.com/2015/01/run-nodejs-application-lamp-stack-server/
 
 ## SSR Deploymnet
+* npm install to restore packages
 * npm run build:ssr
-* copy dist folder to destination
+* copy dist folder to destination [from dist folder `scp -r ./* <dest_user>@<host>:~/<drop_location>`]
 
 ## Server setup for SSR
 * Install NVM
