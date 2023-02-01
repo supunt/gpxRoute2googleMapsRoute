@@ -31,5 +31,6 @@ steps:
     ls $(Build.SourcesDirectory)
   displayName: 'List Built artefacts'
 
-- publish: $(System.SourcesDirectory)/dist
+- publish: $(System.DefaultWorkingDirectory)/dist
   artifact: dist
+  displayName: 'Publish dist dir'
