@@ -28,5 +28,5 @@ steps:
   displayName: 'Bulild SSR with npm'
 
 - script: |
-    ls $(Build.ArtifactStagingDirectory)\dist
+    ls $(Build.ArtifactStagingDirectory)
   displayName: 'List Built artefacts'
