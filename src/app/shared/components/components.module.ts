@@ -5,6 +5,8 @@ import { LoaderModule } from './loader/loader.module';
 import { PaypalDonateModule } from './paypal-donate/paypal-donate.module';
 import { HeaderModule } from './header/header.module';
 import { AlertModule } from './alert/alert.module';
+import { BegModule } from './beg/beg.module';
+import { WhatIsModule } from './what-is/what-is.module';
 
 
 
@@ -18,7 +20,9 @@ import { AlertModule } from './alert/alert.module';
     LoaderModule,
     PaypalDonateModule,
     HeaderModule,
-    AlertModule
+    AlertModule,
+    BegModule,
+    WhatIsModule
 ]
 })
 export class ComponentsModule { }

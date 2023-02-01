@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-paypal-donate',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaypalDonateComponent implements OnInit {
 
+  @Input() showDetails = true;
   constructor() { }
 
   ngOnInit(): void {
