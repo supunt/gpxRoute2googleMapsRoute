@@ -26,3 +26,7 @@ steps:
 - script: |
     npm run build:ssr
   displayName: 'Bulild SSR with npm'
+
+- script: |
+    ls $(Build.ArtifactStagingDirectory)\dist
+  displayName: 'List Built artefacts'
