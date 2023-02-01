@@ -4,7 +4,9 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- master
+  branches:
+    include:
+      - master
 
 pool:
   vmImage: ubuntu-latest
@@ -12,11 +14,15 @@ pool:
 steps:
 - task: NodeTool@0
   inputs:
-    versionSpec: '10.1.4'
-  displayName: 'Install Node.js'
+    versionSpec: '14.15.1'
+  displayName: 'Install Node.js (v14.15.1)'
 
 - script: |
-    npm install -g @angular/cli
+    npm install -g @angular/cli@10.1.4
     npm install
+    npm run build:ssr
+  displayName: 'Installing Anguler v10.1.4 and packages'
+
+- script: |
     npm run build:ssr
   displayName: 'Bulild SSR with npm'
