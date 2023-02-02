@@ -33,3 +33,8 @@ https://www.thepolyglotdeveloper.com/2015/01/run-nodejs-application-lamp-stack-s
 * Install Node
 * Install npm
 * Install PM2
+
+## SSL Instructions
+* Download SSL files
+* `/etc/apache2/sites-available/https.conf` - check instructions
+* `sudo service apache2 restart`
