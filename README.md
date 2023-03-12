@@ -37,4 +37,49 @@ https://www.thepolyglotdeveloper.com/2015/01/run-nodejs-application-lamp-stack-s
 ## SSL Instructions
 * Download SSL files
 * `/etc/apache2/sites-available/https.conf` - check instructions
+
+    ```
+    <IfModule mod_ssl.c>
+        <VirtualHost _default_:443>
+
+            <Directory /var/www/html/>
+                Options -Indexes
+                Require all granted
+            </Directory>
+
+            <Files ".ht*">
+                Require all denied
+            </Files>
+
+            #ServerAdmin webmaster@example.com
+            #ServerName host.example.com
+
+            DocumentRoot /var/www/html
+
+            SetEnvIf Request_URI "^/favicon\.ico$" dontlog
+            SetEnvIf Request_URI "^/robots\.txt$" dontlog
+
+            ErrorLog ${APACHE_LOG_DIR}/error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+            DirectoryIndex index.php index.html
+
+            SSLEngine on
+            # SSLCertificateFile      /etc/apache2/ssl/server.crt
+            # SSLCertificateKeyFile   /etc/apache2/ssl/server.key
+            SSLCertificateFile /root/.server_keys/gpx2googlemaps.com.crt
+            SSLCertificateKeyFile /root/.server_keys/gpx2googlemaps_com.key
+
+            # Ubuntu default: Enable StdEnvVars
+            <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                    SSLOptions +StdEnvVars
+            </FilesMatch>
+            <Directory /usr/lib/cgi-bin>
+                    SSLOptions +StdEnvVars
+            </Directory>
+
+        </VirtualHost>
+    </IfModule>
+    ```
 * `sudo service apache2 restart`
+
